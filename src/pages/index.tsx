@@ -62,10 +62,10 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
               <button type="button">
                 <img  
-                width='18rem'
-                height='18rem'
-                src="/play.png" 
-                alt="Tocar episódio"/>
+                  width='18rem'
+                  height='18rem'
+                  src="/play.png" 
+                  alt="Tocar episódio"/>
               </button>
             </li>
           ))}
