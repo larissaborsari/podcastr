@@ -1,20 +1,32 @@
 import { Inter } from '@next/font/google'
-import { useEffect } from 'react'
-import Header from '../components/Header'
+import { GetStaticProps  } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home(props: any) {
+type Episode = {
+  episodes: Array<{
+    id: string,
+    title: string,
+    members: string,
+    //...
+  }>
+}
+
+type HomeProps = {
+  episodes: Array<Episode>
+}
+
+export default function Home(props: HomeProps) {
   return (
     <>
-       <p>index</p>
+       <p>index</p> 
        <p>{JSON.stringify(props.episodes)}</p>
     </>
   );
 };
 
-export async function getStaticProps() {
-  const response = await fetch('http://localhost:3333/episodes');
+export  const  getStaticProps: GetStaticProps= async() =>{
+  const response = await fetch('http://localhost:3333/episodes?_limit=12&_sort=published_at&_order=desc');
   const data = await response.json();
 
   return {
