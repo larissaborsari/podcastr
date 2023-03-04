@@ -79,6 +79,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                 <th></th>
                 <th>Podcast</th>
                 <th>Integrantes</th>
+                <th>Publicado em</th>
                 <th>Duração</th>
                 <th></th>
               </tr>
@@ -101,7 +102,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                     </Link>
                   </td>
                   <td>{episode.members}</td>
-                  <td style={{ width: 100 }}>{episode.publishedAt}</td>
+                  <td style={{ width: 150 }}>{episode.publishedAt}</td>
                   <td>{episode.durationAsString}</td>
                   <td>
                     <button type="button" >
