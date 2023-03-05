@@ -1,13 +1,18 @@
+import { useContext } from 'react';
+import { PlayerContext } from '../../contexts/PlayerContext';
 import styles from './styles.module.scss';
 
 
 export default function Player() {
+
+    const player = useContext(PlayerContext);
+
     return (
         <div className={styles.playerContainer}>
 
             <header>
                 <img src="/playing.png" alt="Tocando agora" width="30px" />
-                <strong>Tocando Agora</strong>
+                <strong>Tocando Agora {player}</strong>
             </header>
 
             <div className={styles.emptyPlayer}>

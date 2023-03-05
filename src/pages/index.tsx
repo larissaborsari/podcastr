@@ -11,6 +11,8 @@ import { convertDurationToTImeString } from "../utils/convertDurationToTimeStrin
 
 import styles from './home.module.scss';
 import Head from "next/head"
+import { PlayerContext } from "../contexts/PlayerContext"
+import { useContext } from "react"
 
 type Episode = {
   id: string;
@@ -31,7 +33,7 @@ type HomeProps = {
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
-
+  const player = useContext(PlayerContext);
 
   return (
     <div className={styles.homepage}>
@@ -39,7 +41,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
         <title>Home | Podcastr</title>
       </Head>
       <section className={styles.latestEpisodes}>
-        <h2>Últimos lançamentos</h2>
+        <h2>Últimos lançamentos {player}</h2>
 
         <ul>
           {latestEpisodes.map((episode, index) => (
