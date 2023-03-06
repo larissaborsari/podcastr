@@ -130,9 +130,9 @@
         background: var(--purple-400);
         transition: filter 0.2s;
   
-        &:hover {
-          filter: brightness(0.95)
-        }
+        &:hover:not(:disabled) {
+            filter: brightness(0.7)
+          }
       }
     }
   }

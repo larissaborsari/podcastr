@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { PlayerContext } from '../../contexts/PlayerContext';
 import styles from './styles.module.scss';
 import Slider from 'rc-slider';
@@ -7,8 +7,25 @@ import 'rc-slider/assets/index.css'
 
 export default function Player() {
 
-    const {currentEpisodeIndex, episodeList } = useContext(PlayerContext);
+    const audioRef =  useRef<HTMLAudioElement>(null)
+
+    const {currentEpisodeIndex, episodeList, isPlaying, togglePlay } = useContext(PlayerContext);
     const episode = episodeList[currentEpisodeIndex];
+
+    useEffect(( ) => {
+        if (!audioRef.current)
+        {
+            return;
+        }
+        if (isPlaying)
+        {
+            audioRef.current.play();
+        }
+        else 
+        {
+            audioRef.current.pause();
+        }
+    }, [isPlaying])
 
     return (
         <div className={styles.playerContainer}>
@@ -60,6 +77,7 @@ export default function Player() {
                 { episode && (
                     <audio 
                     src={episode.url}
+                    ref={audioRef}
                     autoPlay
                     />
                     
@@ -75,8 +93,8 @@ export default function Player() {
                         <img src="/play-previous.png" alt="Tocar anterior" width='18rem'/>
                     </button>
 
-                    <button type='button' className={styles.playButton} disabled={!episode}>
-                        <img src="/play.png" alt="Tocar" width='20rem'/>
+                    <button type='button' className={styles.playButton} disabled={!episode} onClick={togglePlay}>
+                        { isPlaying ? <img src="/pause.png" alt='Parar' width= '20rem'/> : <img src="/play.png" alt="Tocar" width='20rem'/>}
                     </button>
 
                     <button type='button' disabled={!episode}>

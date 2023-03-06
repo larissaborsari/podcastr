@@ -11,15 +11,21 @@ export default function App({ Component, pageProps }: AppProps) {
 
 const [episodeList, setEpisodeList] = useState<any>([]);
 const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
+const [isPlaying, setIsPlaying] = useState(false);
 
 function play(episode: any) {
   setEpisodeList([episode]);
   setCurrentEpisodeIndex(0);
+  setIsPlaying(true);
+}
+
+function togglePlay() {
+  setIsPlaying(!isPlaying);
 }
 
   return (
 
-    <PlayerContext.Provider value={{currentEpisodeIndex, episodeList, play}}>
+    <PlayerContext.Provider value={{currentEpisodeIndex, episodeList, play, isPlaying, togglePlay}}>
     <div className={styles.wrapper}>
       <main>
           <Header/>
