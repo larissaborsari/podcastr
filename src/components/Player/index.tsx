@@ -57,25 +57,33 @@ export default function Player() {
 
                 </div>
 
+                { episode && (
+                    <audio 
+                    src={episode.url}
+                    autoPlay
+                    />
+                    
+                )}
+
                 <div className={styles.buttons}>
                     
-                    <button type='button'>
+                    <button type='button' disabled={!episode}>
                         <img src="/shuffle.png" alt="Embaralhar" width='18rem' />
                     </button>
 
-                    <button type='button'>
+                    <button type='button' disabled={!episode}>
                         <img src="/play-previous.png" alt="Tocar anterior" width='18rem'/>
                     </button>
 
-                    <button type='button' className={styles.playButton}>
+                    <button type='button' className={styles.playButton} disabled={!episode}>
                         <img src="/play.png" alt="Tocar" width='20rem'/>
                     </button>
 
-                    <button type='button'>
+                    <button type='button' disabled={!episode}>
                         <img src="/play-next.png" alt="Tocar próxima" width='18rem' />
                     </button>
 
-                    <button type='button'>
+                    <button type='button' disabled={!episode}>
                         <img src="/repeat.png" alt="Repetir" width='18rem'/>
                     </button>
 
