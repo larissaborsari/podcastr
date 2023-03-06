@@ -5,19 +5,28 @@ import styles from './styles.module.scss';
 
 export default function Player() {
 
-    const player = useContext(PlayerContext);
+    const {currentEpisodeIndex, episodeList } = useContext(PlayerContext);
+    const episode = episodeList[currentEpisodeIndex];
 
     return (
         <div className={styles.playerContainer}>
 
             <header>
                 <img src="/playing.png" alt="Tocando agora" width="30px" />
-                <strong>Tocando Agora {player}</strong>
+                <strong>Tocando Agora </strong>
             </header>
 
+          { episode ? (
+            <div className={styles.currentEpisode}> 
+                <img width={250} height={250} src={episode.thumbnail} />
+                <strong>{episode.title}</strong>
+                <span>{episode.members}</span>
+            </div>
+          ) : (  
             <div className={styles.emptyPlayer}>
                 <strong>Selecione um podcast para ouvir</strong>
             </div>
+            ) }
 
             <footer className={styles.empty}>
                 <div className={styles.progess}>

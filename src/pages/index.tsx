@@ -33,7 +33,7 @@ type HomeProps = {
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
-  const player = useContext(PlayerContext);
+  const { play }  = useContext(PlayerContext);
 
   return (
     <div className={styles.homepage}>
@@ -41,7 +41,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
         <title>Home | Podcastr</title>
       </Head>
       <section className={styles.latestEpisodes}>
-        <h2>Últimos lançamentos {player}</h2>
+        <h2>Últimos lançamentos</h2>
 
         <ul>
           {latestEpisodes.map((episode, index) => (
@@ -62,7 +62,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                 <span>{episode.durationAsString}</span>
               </div>
 
-              <button type="button">
+              <button type="button" onClick={() => play(episode)}>
                 <img  
                   width='18rem'
                   height='18rem'
@@ -107,7 +107,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                   <td style={{ width: 150 }}>{episode.publishedAt}</td>
                   <td>{episode.durationAsString}</td>
                   <td>
-                    <button type="button" >
+                    <button type="button"  onClick={() => play(episode)}>
                       <img  
                       width='18rem'  
                       height='18rem' 
