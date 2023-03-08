@@ -19,7 +19,7 @@ type PlayerContextData = {
 
 export const PlayerContext = createContext({ } as PlayerContextData);
 
-export function PlayerContextProvider() {
+export function PlayerContextProvider({ children }:any) {
     const [episodeList, setEpisodeList] = useState<any>([]);
     const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -39,6 +39,8 @@ export function PlayerContextProvider() {
     }
     return (
 
-        <PlayerContext.Provider value={{currentEpisodeIndex, episodeList, play, isPlaying, togglePlay, setPlayingState}} />
+        <PlayerContext.Provider value={{currentEpisodeIndex, episodeList, play, isPlaying, togglePlay, setPlayingState}} >
+            {children}
+          </PlayerContext.Provider>  
     )
 }
