@@ -2,6 +2,7 @@
     padding: 0 4rem;
     height: calc(100vh - 6.5rem);
     overflow-y: scroll;
+    max-width: 1000px;
 
     h2{
         margin-top: 3rem;
@@ -130,7 +131,7 @@
             }
 
             a {
-                color: var(--gray-100);
+                color: var(--gray-500);
                 font-family: Lexend, sans-serif;
                 font-weight: 600;
                 text-decoration: none;
