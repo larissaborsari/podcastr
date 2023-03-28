@@ -7,6 +7,7 @@ import { convertDurationToTImeString } from '../../utils/convertDurationToTimeSt
 import styles from './episode.module.scss' ;
 import Head from "next/head";
 import Link from 'next/link';
+import { usePlayer } from '../../contexts/PlayerContext';
 
 type Episode = {    
   id: string;
@@ -25,8 +26,9 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps ) {
-//   const { play } = usePlayer()
+  const { play } = usePlayer()
   const router = useRouter()
+
 
   if (router.isFallback) {
     return <p>Carregando...</p>
@@ -49,7 +51,7 @@ export default function Episode({ episode }: EpisodeProps ) {
                   height={350}
                   src={episode.thumbnail}
                    alt={''}        />
-        <button onClick={() => {console.log(`nada`)}}>
+        <button onClick={() => play(episode)}>
           <img src="/play.svg" alt="Tocar episódio"/>
         </button>
       </div>
