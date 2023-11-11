@@ -1,5 +1,5 @@
 ## Podcastr - Podcast Audio Player
-Podcastr is a podcast audio player application built with Next.js, designed to help you listen to your favorite podcasts with ease. This README provides an overview of the project, how to set it up, and its key features.
+Podcastr is a podcast audio player application built with Next.js, designed to help you listen to your favorite podcasts with ease. This README provides an overview of the project, how to set it up, and its key features, it also gives the proper credits at the end.
 
 ## Features
 - Listen to Podcasts: Play and enjoy your favorite podcasts directly from the application.
